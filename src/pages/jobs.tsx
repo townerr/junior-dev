@@ -1,11 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import PostingCard from "../components/PostingCard";
 import Search from "../components/Search";
 import Sidebar from "../components/Sidebar";
 import { trpc } from "../utils/trpc";
+//import { Posting } from '../types/Posting';
 
 const Jobs: NextPage = () => {
-  //const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+  const postings = trpc.useQuery(["jobs.getAll"]);
 
   return (
     <>
@@ -18,7 +20,27 @@ const Jobs: NextPage = () => {
       <main className="">
         <section>
             <Search />
-            <Sidebar />
+            <div className="flex">
+              <Sidebar />
+              {
+                postings.data?.map((p) => (
+                  <PostingCard
+                    key={p.id}
+                    id={p.id}
+                    employer={p.employer}
+                    employerIng={p.employerImg}
+                    location={p.location}
+                    title={p.title}
+                    type={p.type}
+                    level={p.level}
+                    salary={p.salary}
+                    description={p.description}
+                    skills={p.skills}
+                    createdAt={p.createdAt}
+                  />
+                ))
+              }
+            </div>
         </section>
       </main>
     </>

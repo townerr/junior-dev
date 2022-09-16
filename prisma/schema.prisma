@@ -10,6 +10,16 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
+model Postings {
     id String @id @default(cuid())
+    employer String
+    employerImg String
+    location String
+    title String
+    type String
+    level String
+    salary String
+    description String
+    createdAt DateTime @default(now())
+    skills String
 }
