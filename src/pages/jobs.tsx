@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Search from "../components/Search";
+import Sidebar from "../components/Sidebar";
 import { trpc } from "../utils/trpc";
 
 const Jobs: NextPage = () => {
@@ -17,6 +18,7 @@ const Jobs: NextPage = () => {
       <main className="">
         <section>
             <Search />
+            <Sidebar />
         </section>
       </main>
     </>
