@@ -20,26 +20,27 @@ const Jobs: NextPage = () => {
       <main className="">
         <section>
             <Search />
-            <div className="flex">
-              <Sidebar />
-              {
-                postings.data?.map((p) => (
-                  <PostingCard
-                    key={p.id}
-                    id={p.id}
-                    employer={p.employer}
-                    employerIng={p.employerImg}
-                    location={p.location}
-                    title={p.title}
-                    type={p.type}
-                    level={p.level}
-                    salary={p.salary}
-                    description={p.description}
-                    skills={p.skills}
-                    createdAt={p.createdAt}
-                  />
-                ))
-              }
+            <div className="">
+              <div className="flex flex-wrap justify-center md:justify-start">
+                {
+                  postings.data?.map((p) => (
+                    <PostingCard
+                      key={p.id}
+                      id={p.id}
+                      employer={p.employer}
+                      employerIng={p.employerImg}
+                      location={p.location}
+                      title={p.title}
+                      type={p.type}
+                      level={p.level}
+                      salary={p.salary}
+                      description={p.description}
+                      skills={p.skills}
+                      createdAt={p.createdAt}
+                    />
+                  ))
+                }
+              </div>
             </div>
         </section>
       </main>
