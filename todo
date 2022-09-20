@@ -1,0 +1,26 @@
+Major Features:
+	- better skills section on posting
+		- skill component
+		- seperate on ';'s
+	- allow filtering on postings
+	- allow searching for postings by keywords
+		- make keywords from title/location/skills or something idk
+	- job post creation
+		- trpc route
+
+Minor Fixes:
+	- default employerimg if they dont use one
+    - insert link to default on creation if one isnt provided
+	- update posting model for links to posting on company website
+	- better posting design
+	- logo next to search bar junior.dev
+
+Hopeful Features:
+	- allow users to upload a resume
+		- create prisma model
+		- create trpc routes for create and get
+	- allow account creation
+		- prisma model
+		- trpc route
+		- employers to tie postings/resumes uploaded to posting
+		- employees to tie an uploaded resume and jobs they have applied for
