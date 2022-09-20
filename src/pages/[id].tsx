@@ -5,6 +5,7 @@ import Link from "next/link";
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
 import Search from "../components/Search";
+import SkillsList from "../components/SkillsList";
 //import { Posting } from '../types/Posting';
 
 //TODO: If posting === null show 404 page else show job posting
@@ -51,8 +52,9 @@ const JobPage: NextPage = () => {
                 <p className="sm:px-24 px-8 pb-4">{posting.data?.salary}</p>
               </div>
               <div>
-                <h2 className="py-4 text-xl font-semibold">Skills Wishlist</h2>
+                <h2 className="py-4 text-xl font-semibold">Desired Skills</h2>
                 <p className="sm:px-24 px-8 pb-4">{posting.data?.skills}</p>
+                <SkillsList skills={posting.data?.skills} />
               </div>
               <p className="pt-8 pb-4">Posted: {posting.data?.createdAt.toLocaleDateString()}</p>
             </div>
