@@ -6,6 +6,8 @@ import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
 import Search from "../components/Search";
 import SkillsList from "../components/SkillsList";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 //import { Posting } from '../types/Posting';
 
 //TODO: If posting === null show 404 page else show job posting
@@ -26,6 +28,11 @@ const JobPage: NextPage = () => {
       posting.data != null ? (
         <main className="bg-purple-200">
           <Search />
+          <Link href="/jobs">
+            <a className="absolute top-[8.5rem] left-[16.5rem] bg-gray-200 p-2 rounded-lg flex gap-1 hover:bg-gray-300 hover:scale-105">
+              <FontAwesomeIcon width={16} icon={faArrowLeft} /> Back to Jobs
+            </a>
+          </Link>
           <section> 
             <div className="container mx-auto mt-12 max-w-6xl bg-white text-center rounded-2xl">
               <div className="pt-8 flex flex-col gap-4 items-center justify-center">

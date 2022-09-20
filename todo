@@ -1,7 +1,4 @@
 Major Features:
-	- better skills section on posting
-		- skill component
-		- seperate on ';'s
 	- allow filtering on postings
 	- allow searching for postings by keywords
 		- make keywords from title/location/skills or something idk
@@ -12,8 +9,6 @@ Minor Fixes:
 	- default employerimg if they dont use one
     - insert link to default on creation if one isnt provided
 	- update posting model for links to posting on company website
-	- better posting design
-	- logo next to search bar junior.dev
 
 Hopeful Features:
 	- allow users to upload a resume
