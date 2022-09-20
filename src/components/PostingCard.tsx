@@ -3,8 +3,6 @@ import React from 'react';
 import { Posting } from '../types/Posting';
 import { useRouter } from 'next/router';
 
-//TODO: redirect to the posting page of /[id]
-
 const PostingCard = ({id, employer, employerIng, location, title, type, salary, createdAt} : Posting) => {
   const router = useRouter();
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
