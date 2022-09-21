@@ -56,7 +56,6 @@ const JobPage: NextPage = () => {
               </div>
               <div>
                 <h2 className="py-4 text-xl font-semibold">Desired Skills</h2>
-                <p className="sm:px-24 px-8 pb-4">{posting.data?.skills}</p>
                 <SkillsList skills={posting.data?.skills} />
               </div>
               <p className="pt-8 pb-4">Posted: {posting.data?.createdAt.toLocaleDateString()}</p>

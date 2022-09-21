@@ -22,4 +22,5 @@ model Postings {
     description String
     createdAt DateTime @default(now())
     skills String
+    link String @default("")
 }
