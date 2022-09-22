@@ -8,7 +8,6 @@ Major Features:
 Minor Fixes:
 	- default employerimg if they dont use one
     - insert link to default on creation if one isnt provided
-	- update posting model for links to posting on company website
 
 Hopeful Features:
 	- allow users to upload a resume

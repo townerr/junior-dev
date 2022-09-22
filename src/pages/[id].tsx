@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
 import Search from "../components/Search";
@@ -44,7 +46,9 @@ const JobPage: NextPage = () => {
               </div>
               <div>
                 <h2 className="py-4 text-xl font-semibold">About the Job</h2>
-                <p className="sm:px-24 px-8 pb-4">{posting.data?.description}</p>
+                <div className="sm:px-24 px-8 pb-4">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{posting.data?.description}</ReactMarkdown>
+                </div>
               </div>
               <div>
                 <h2 className="py-4 text-xl font-semibold">Job Type</h2>
