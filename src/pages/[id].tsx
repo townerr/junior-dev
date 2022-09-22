@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import React from "react";
+import React, { useEffect, useState} from "react";
 import Head from "next/head";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
@@ -10,14 +10,22 @@ import Search from "../components/Search";
 import SkillsList from "../components/SkillsList";
 import BackButton from "../components/BackButton";
 
-//import { Posting } from '../types/Posting';
-
-//TODO: If posting === null show 404 page else show job posting
-
 const JobPage: NextPage = () => {
+  const [description, setDescription] = useState("");
+
+  //get jobId from url, and set to -1 if null
   let jobId = useRouter().query.id?.toString();
   if(!jobId) jobId = "-1";
+
+  //Get posting from trpc
   const posting = trpc.useQuery(["jobs.getPostingById", { id: jobId }]);
+
+  //Get Markdown file with job description
+  useEffect(() => {
+    fetch("/Jobs/" + jobId + ".md").then((res) => res.text()).then((text) => {
+      setDescription(text);
+    });
+  }, [jobId]);
 
   return (
   <>
@@ -27,6 +35,7 @@ const JobPage: NextPage = () => {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     {
+      //display posting if it exists
       posting.data != null ? (
         <main className="bg-purple-200">
           <Search />
@@ -46,8 +55,8 @@ const JobPage: NextPage = () => {
               </div>
               <div>
                 <h2 className="py-4 text-xl font-semibold">About the Job</h2>
-                <div className="sm:px-24 px-8 pb-4">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{posting.data?.description}</ReactMarkdown>
+                <div className="sm:px-24 px-8 pb-4 prose max-w-full text-left">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{description}</ReactMarkdown>
                 </div>
               </div>
               <div>
@@ -68,6 +77,7 @@ const JobPage: NextPage = () => {
           <div className="py-6"></div>
         </main>
       ) :
+      //display 404 page if posting not found
       (
         <div className="flex bg-purple-200 justify-center h-screen">
           <div className="flex flex-col bg-white mt-24 px-24 text-center max-w-2xl max-h-64 rounded-2xl">
@@ -80,8 +90,6 @@ const JobPage: NextPage = () => {
         </div>
       )
     }
-    
-    
   </>
   );
 };
