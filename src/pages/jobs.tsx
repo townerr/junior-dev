@@ -4,7 +4,6 @@ import PostingCard from "../components/PostingCard";
 import Search from "../components/Search";
 import Sidebar from "../components/Sidebar";
 import { trpc } from "../utils/trpc";
-//import { Posting } from '../types/Posting';
 
 const Jobs: NextPage = () => {
   const postings = trpc.useQuery(["jobs.getAll"]);

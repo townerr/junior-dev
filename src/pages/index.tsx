@@ -9,6 +9,10 @@ const Home: NextPage = () => {
     router.push("/jobs");
   }
 
+  const handleCreate = () => {
+    router.push("/new-posting");
+  }
+
   return (
     <>
       <Head>
@@ -24,7 +28,12 @@ const Home: NextPage = () => {
         <section>
           <p className="text-center font-mono font-semibold text-gray-700">I am trying to...</p>
           <div className="flex flex-row gap-4 py-8">
-            <button className="bg-purple-600 text-white text-xl font-mono py-3 px-3 rounded hover:bg-purple-500 hover:scale-105">Post a Job</button>
+            <button
+              className="bg-purple-600 text-white text-xl font-mono py-3 px-3 rounded hover:bg-purple-500 hover:scale-105"
+              onClick={handleCreate}
+            >
+              Post a Job
+            </button>
             <button
               className="bg-purple-600 text-white text-xl font-mono py-3 px-3 rounded hover:bg-purple-500 hover:scale-105"
               onClick={handleJobs}
